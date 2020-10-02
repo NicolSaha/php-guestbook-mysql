@@ -1,5 +1,3 @@
-# php-guestbook-mysql
-
 # ✨ Guestbook PHP + MYSQL
 
 ## 📓 [Exercise](https://github.com/becodeorg/gnt-yu-3-21/tree/master/3.The-Mountain/6.About-databases)
