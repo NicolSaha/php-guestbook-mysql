@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require './Model/GuestbookPost.php';
 require './Control/PostManager.php';
+require './connectDatabase.php';
 
 //DATE
 date_default_timezone_set(ini_get('date.timezone'));
@@ -70,14 +71,14 @@ if (!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['mes
     if ($isFormValid == true) {
         // DATE
         $currentDate = new DateTime();
-        $currentDateFormatted = $currentDate->format('d/m/Y H:i');
+        $currentDateFormatted = $currentDate->format('Y/m/d');
 
         //SAVE TO GUESTBOOK
         $guestbook = new GuestbookPost($currentDateFormatted, $name, $email, $title, $message);
+        $guestbook->addPostToDatabase();
 
         //POST TO GUESTBOOK
         $postNow = new PostManager();
-        $postNow->savePost();
 
         //RESET INPUT FIELDS
         $name = $email = $title = $message = "";
@@ -85,15 +86,13 @@ if (!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['mes
 }
 
 //POST TO GUESTBOOK
-$postManagerShow = new PostManager();
-$postsDecodedReversed = $postManagerShow->showPost();
+//$postManagerShow = new PostManager();
+//$postsDecodedReversed = $postManagerShow->showPost();
 
 // HTML IMPORT LAST
 require './View/guestbook_form.php';
 
+
 //TODO: Input field with how many visible messages
 //TODO: Profanity filter
 //TODO: Replace it with an image of such a smiley
-
-
-

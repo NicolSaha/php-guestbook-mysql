@@ -111,7 +111,7 @@
 
 <div class="bg-gray-100 shadow overflow-hidden sm:rounded-md">
     <ul>
-        <?php foreach ($postsDecodedReversed as $postItem): ?>
+        <?php $query = "SELECT * FROM Posts"; $result = openConnection()->query($query); while($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
          <li>
             <a href="#" class="block hover:bg-gray-100 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                 <div class="flex items-center px-4 py-4 sm:px-6">
@@ -122,27 +122,27 @@
                                     <!-- Heroicon name: check-circle -->
                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                                    </svg> <p  class="text-sm leading-5 font-medium text-indigo-600 truncate"> <?php echo strtoupper($postItem['full_name']); ?> </p></div>
+                                    </svg> <p  class="text-sm leading-5 font-medium text-indigo-600 truncate"> <?php echo $row['Name']; ?> </p></div>
                                     <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                                     <!-- Heroicon name: mail -->
                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                     </svg>
-                                    <span class="truncate"> <?php echo $postItem['email']; ?> </span> </div>
+                                    <span class="truncate"> <?php echo $row['Email']; ?> </span> </div>
                                     <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                                     <!-- Heroicon name: calendar -->
                                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
                                     </svg>
-                                    <span class="truncate"> Written on <?php echo $postItem['date_of_posting']; ?> </span> </div>
+                                    <span class="truncate"> Written on <?php echo $row['Date']; ?> </span> </div>
                                     </div> <br/>
                                 <div class="hidden md:block">
                                 <div>
                                     <div class="text-sm leading-5 text-gray-900">
-                                        <span> <b><i>Title:</i></b> <?php echo $postItem['message_title']; ?> </span> </div>
+                                        <span> <b><i>Title:</i></b> <?php echo $row['Message_Title']; ?> </span> </div>
                                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-900">
-                                            <?php echo $postItem['message']; ?> </div>
+                                            <?php echo $row['Message_Content']; ?> </div>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                 </div>
             </a>
         </li>
-        <?php endforeach; ?>
+        <?php  $result->closeCursor(); endwhile; ?>
 </ul>
 </div>
 </body>

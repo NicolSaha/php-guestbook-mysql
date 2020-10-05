@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 function openConnection() : PDO {
-// Try to figure out what these should be for you
 $dbhost    = "localhost";
 $dbuser    = "becode";
 $dbpass    = "becode";
@@ -18,3 +17,14 @@ $pdo = new PDO('mysql:host='. $dbhost .';dbname='. $db, $dbuser, $dbpass, $drive
 
 return $pdo;
 }
+
+//CHECK CONNECTION TO DATABASE
+try {
+    openConnection()->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return "Connected successfully";
+}
+catch(PDOException $e)
+{
+    return "Connection failed: " . $e->getMessage();
+}
+
