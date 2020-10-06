@@ -8,7 +8,7 @@ require './connectDatabase.php';
 //DATE
 date_default_timezone_set(ini_get('date.timezone'));
 $currentDate = new DateTime();
-$currentDateFormatted = $currentDate->format('d/m/Y H:i');
+$currentDateFormatted = $currentDate->format('Y/m/d');
 
 //ERROR MESSAGING
 //$errorMessage = '<p class="text-red-600 text-sm italic"> Invalid </p>';

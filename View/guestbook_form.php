@@ -111,7 +111,12 @@
 
 <div class="bg-gray-100 shadow overflow-hidden sm:rounded-md">
     <ul>
-        <?php $query = "SELECT * FROM Posts"; $result = openConnection()->query($query); while($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
+        <?php
+            $query = "SELECT * FROM Posts";
+            $result = openConnection()->query($query);
+            $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as $row):
+        ?>
          <li>
             <a href="#" class="block hover:bg-gray-100 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
                 <div class="flex items-center px-4 py-4 sm:px-6">
@@ -156,7 +161,7 @@
                 </div>
             </a>
         </li>
-        <?php  $result->closeCursor(); endwhile; ?>
+        <?php endforeach; ?>
 </ul>
 </div>
 </body>

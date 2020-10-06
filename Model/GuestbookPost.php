@@ -29,14 +29,17 @@ class GuestbookPost {
             $data->bindParam(':Date', $date);
             $data->bindParam(':Message_Title', $title);
             $data->bindParam(':Message_Content', $message);
+
             $name = $this->authorName;
             $email = $this->email;
             $date = $this->postDate;
             $title = $this->messageTitle;
             $message = $this->messageContent;
             $data->execute();
+
         } catch(PDOException $e) {
             echo 'ERROR: ' . $e->getMessage();
         }
     }
+
 }
