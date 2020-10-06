@@ -115,7 +115,8 @@
             $query = "SELECT * FROM Posts";
             $result = openConnection()->query($query);
             $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($rows as $row):
+            $rowsLimited = array_slice(array_reverse($rows), 0, 21 - 1);
+            foreach ($rowsLimited as $row):
         ?>
          <li>
             <a href="#" class="block hover:bg-gray-100 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">

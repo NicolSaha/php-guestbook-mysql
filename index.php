@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require './Model/GuestbookPost.php';
-require './Control/PostManager.php';
+require './Control/GuestbookPost.php';
 require './connectDatabase.php';
 
 //DATE
@@ -84,10 +83,6 @@ if (!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['mes
         $name = $email = $title = $message = "";
     }
 }
-
-//POST TO GUESTBOOK
-//$postManagerShow = new PostManager();
-//$postsDecodedReversed = $postManagerShow->showPost();
 
 // HTML IMPORT LAST
 require './View/guestbook_form.php';
