@@ -4,6 +4,18 @@ declare(strict_types=1);
 require './Control/GuestbookPost.php';
 require './connectDatabase.php';
 
+
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+}
+whatIsHappening();
+
+// Connecting to the database
+$pdo = openConnection();
+
 //DATE
 date_default_timezone_set(ini_get('date.timezone'));
 $currentDate = new DateTime();
@@ -24,6 +36,10 @@ function cleanData($data){
 //SET VARIABLES TO EMPTY
 $name = $email = $title = $message = "";
 
+$guestbook = new GuestbookPost($currentDateFormatted, $name, $email, $title, $message);
+
+
+// POST
 if (!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['message_title']) && !empty($_POST['message'])) {
 
 //VALIDATE EMAIL
@@ -76,13 +92,16 @@ if (!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['mes
         $guestbook = new GuestbookPost($currentDateFormatted, $name, $email, $title, $message);
         $guestbook->addPostToDatabase();
 
-        //POST TO GUESTBOOK
-        $postNow = new PostManager();
-
         //RESET INPUT FIELDS
         $name = $email = $title = $message = "";
     }
 }
+    // DELETE POST
+elseif (isset($_POST['delete'])) {
+    $id = $_POST['delete'];
+    $guestbook->deletePost($id);
+}
+
 
 // HTML IMPORT LAST
 require './View/guestbook_form.php';

@@ -154,10 +154,18 @@
                         </div>
                     </div>
                     <div>
-                        <!-- Heroicon name: chevron-right -->
-                        <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
+                        <form method="post">
+                            <span class="hidden inline-flex rounded-md shadow-sm">
+                                <button type="submit" id="update" name="update" value="<?php echo $row['ID']; ?>"
+                                    class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" > Update
+                                </button >
+                            </span>
+                            <span class="inline-flex rounded-md shadow-sm">
+                                <button type="submit" id="delete" name="delete" value="<?php echo $row['ID']; ?>"
+                                   class="inline-flex items-center px-2.5 py-1.5 border border-gray-300 text-xs leading-4 font-medium rounded text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150" > Delete
+                                </button >
+                            </span>
+                        </form>
                     </div>
                 </div>
             </a>

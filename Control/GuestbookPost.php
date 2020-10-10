@@ -42,4 +42,19 @@ class GuestbookPost {
         }
     }
 
+    public function deletePost($id)
+    {
+        $deletePost = openConnection()->prepare('DELETE FROM Posts WHERE ID = :id');
+        $deletePost->bindValue(':id', $id);
+        $deletePost->execute();
+    }
+
+    public function getSpecificPost($id)
+    {
+        $specificPost = openConnection()->prepare('SELECT * FROM Posts WHERE ID = :id');
+        $specificPost->bindValue(':id', $id);
+        $specificPost->execute();
+        return $specificPost->fetchAll();
+    }
+
 }
