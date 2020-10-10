@@ -4,15 +4,6 @@ declare(strict_types=1);
 require './Control/GuestbookPost.php';
 require './connectDatabase.php';
 
-
-function whatIsHappening() {
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-}
-whatIsHappening();
-
 // Connecting to the database
 $pdo = openConnection();
 
