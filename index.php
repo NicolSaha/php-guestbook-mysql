@@ -106,7 +106,7 @@ elseif (isset($_POST['delete'])) {
 // HTML IMPORT LAST
 require './View/guestbook_form.php';
 
-
+//TODO: Update functionality
 //TODO: Input field with how many visible messages
 //TODO: Profanity filter
 //TODO: Replace it with an image of such a smiley
